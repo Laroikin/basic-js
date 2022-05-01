@@ -28,16 +28,14 @@ function getDNSStats(domains) {
   for (let site of domains) {
     site = site.split('.').reverse();
     site.forEach((subdomain, ind) => {
-      console.log(site);
-      let j = ind-1;
+      let j = ind - 1;
+
       while (j >= 0) {
         subdomain = `${site[j]}.${subdomain}`;
         j--;
-      } 
+      }
 
-      console.log(subdomain);
-
-      if (obj[`.${subdomain}`] != undefined) {
+      if (obj[`.${subdomain}`]) {
         obj[`.${subdomain}`] += 1;
       } else obj[`.${subdomain}`] = 1;
     });
